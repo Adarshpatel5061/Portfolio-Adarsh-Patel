@@ -72,16 +72,21 @@ animateSkillBars();
 
 // Scroll animations for sections
 const observeElements = () => {
-    const elements = document.querySelectorAll('.about-image-wrapper, .about-content, .project-card, .timeline-item, .skill-category, .contact-info, .contact-form-wrapper');
-    
+    const elements = document.querySelectorAll(
+        'section, .about-image-wrapper, .about-content, .project-card, .timeline-item, .skill-category, .contact-info, .contact-form-wrapper'
+    );
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
             }
         });
     }, {
-        threshold: 0.1
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
     });
 
     elements.forEach(el => {
@@ -90,7 +95,7 @@ const observeElements = () => {
     });
 };
 
-// Initialize scroll animations
+// Initialize
 observeElements();
 
 // Project Modal
