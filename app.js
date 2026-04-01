@@ -105,9 +105,9 @@ const projectData = {
         image: 'Anime Relics Home page.png',
         category: ['UI/UX', 'Mobile', 'E-Commerce'],
         description: 'Designed the full mobile shopping experience in Figma—from the initial mobile login all the way through to a quick, painless checkout. Organized the entire store\'s structure (Information Architecture), creating clear categories for over 6 types of merchandise (like T-shirts, Hoodies, and Cosplay) to make product discovery simple and fun. Built the interactive, high-fidelity prototype that shows how users can seamlessly browse, view product details (including size selection), add items to the cart, and complete their purchase. My goal was simple: make finding awesome anime gear a joyful, engaging experience for fans.',
-        technologies: ['Figma', 'Adobe XD', 'Prototyping', 'Wireframing', 'User Research'],
-        liveUrl: 'https://shorturl.at/FyJNY',
-        githubUrl: '#'
+        technologies: ['Figma', 'Prototyping', 'Wireframing', 'User Research'],
+        liveUrl: 'https://www.figma.com/design/fi7YBj5LHQvdxnig4osj63/Anime-Relics-Prototype-Design?node-id=0-1&t=yWTFjTkJGUYuNMtg-1',
+        githubUrl: 'https://github.com/Adarshpatel5061'
     }
 };
 
