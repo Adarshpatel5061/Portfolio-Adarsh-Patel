@@ -51,7 +51,7 @@ exploreBtn.addEventListener('click', () => {
 // Animate skill progress bars on scroll
 const animateSkillBars = () => {
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -108,6 +108,18 @@ const projectData = {
         technologies: ['Figma', 'Prototyping', 'Wireframing', 'User Research'],
         liveUrl: 'https://www.figma.com/design/fi7YBj5LHQvdxnig4osj63/Anime-Relics-Prototype-Design?node-id=0-1&t=yWTFjTkJGUYuNMtg-1',
         githubUrl: 'https://github.com/Adarshpatel5061'
+    },
+    1: {
+        title: 'Other Projects',
+        image: 'Projects.png',
+        category: ['UI/UX'],
+        description: 'Other Projects',
+        technologies: ['Figma', 'Prototyping', 'Wireframing', 'User Research'],
+        liveUrls: [
+            { label: 'A-Bill Engineers', url: 'https://www.figma.com/design/6U7E6cOIpovjZYcKbZNbUZ/A-Bill-Engineers?t=wke0eWiNTioIAXfu-1' },
+            { label: 'Varella', url: 'https://www.figma.com/design/OTLQdM6JW1Tr7otda0PRDo/Varella?node-id=0-1&t=LhKb8H9IlGcYUFpn-1' },
+            { label: 'Anime Relics', url: 'https://www.figma.com/design/fi7YBj5LHQvdxnig4osj63/Anime-Relics-Prototype-Design?node-id=0-1&t=P3mMWY8qkhTWotSi-1' }
+        ],
     }
 };
 
@@ -122,7 +134,7 @@ viewProjectBtns.forEach(btn => {
         e.stopPropagation();
         const projectId = btn.getAttribute('data-project');
         const project = projectData[projectId];
-        
+
         if (project) {
             modalBody.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="modal-project-image">
@@ -138,20 +150,33 @@ viewProjectBtns.forEach(btn => {
                     </div>
                 </div>
                 <div class="modal-links">
-                    <a href="${project.liveUrl}" class="modal-link modal-link-primary" target="_blank" rel="noopener noreferrer">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                            <polyline points="15 3 21 3 21 9"/>
-                            <line x1="10" y1="14" x2="21" y2="3"/>
-                        </svg>
-                        View Live
-                    </a>
-                    <a href="${project.githubUrl}" class="modal-link modal-link-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                        </svg>
-                        View Code
-                    </a>
+                    ${project.liveUrls ? project.liveUrls.map(item => `
+                        <a href="${item.url}" class="modal-link modal-link-primary" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            View ${item.label}
+                        </a>
+                    `).join('') : project.liveUrl ? `
+                        <a href="${project.liveUrl}" class="modal-link modal-link-primary" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            View Live
+                        </a>
+                    ` : ''}
+                    ${project.githubUrl ? `
+                        <a href="${project.githubUrl}" class="modal-link modal-link-secondary" target="_blank" rel="noopener noreferrer">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                            </svg>
+                            View Code
+                        </a>
+                    ` : ''}
                 </div>
             `;
             modal.classList.add('active');
@@ -191,7 +216,7 @@ const showToast = (title, description) => {
         <div class="toast-description">${description}</div>
     `;
     toast.classList.add('show', 'success');
-    
+
     setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
@@ -199,20 +224,20 @@ const showToast = (title, description) => {
 
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const submitBtn = contactForm.querySelector('.btn-submit');
     const originalText = submitBtn.innerHTML;
-    
+
     // Show loading state
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'Sending...';
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     // Show success message
     showToast('Message sent successfully!', 'Thank you for reaching out. I\'ll get back to you soon.');
-    
+
     // Reset form
     contactForm.reset();
     submitBtn.disabled = false;
@@ -224,7 +249,7 @@ document.addEventListener('mousemove', (e) => {
     const orbs = document.querySelectorAll('.gradient-orb');
     const x = e.clientX / window.innerWidth;
     const y = e.clientY / window.innerHeight;
-    
+
     orbs.forEach((orb, index) => {
         const speed = (index + 1) * 10;
         const xOffset = (x - 0.5) * speed;
@@ -258,7 +283,7 @@ window.addEventListener('scroll', highlightNavigation);
 // Initialize AOS (Animate On Scroll) alternative
 const initAnimations = () => {
     const elements = document.querySelectorAll('.hero-content, .section-header');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -278,7 +303,7 @@ initAnimations();
 // Add smooth reveal animation to elements as they enter viewport
 const revealElements = () => {
     const reveals = document.querySelectorAll('.about-grid, .projects-grid, .timeline-container, .skills-grid, .contact-grid');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -305,11 +330,11 @@ revealElements();
 const addTypingEffect = () => {
     const heroTitle = document.querySelector('.hero-title');
     if (!heroTitle) return;
-    
+
     const text = heroTitle.innerHTML;
     heroTitle.innerHTML = '';
     heroTitle.style.opacity = '1';
-    
+
     let index = 0;
     const typeInterval = setInterval(() => {
         if (index < text.length) {
@@ -327,7 +352,7 @@ const addTypingEffect = () => {
 // Performance optimization: Lazy load images
 const lazyLoadImages = () => {
     const images = document.querySelectorAll('img[data-src]');
-    
+
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -360,10 +385,10 @@ const createCursorTrail = () => {
     const animateCursor = () => {
         const diffX = mouseX - cursorX;
         const diffY = mouseY - cursorY;
-        
+
         cursorX += diffX * 0.1;
         cursorY += diffY * 0.1;
-        
+
         requestAnimationFrame(animateCursor);
     };
 
@@ -374,7 +399,7 @@ const createCursorTrail = () => {
 // Initialize all features
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio website loaded successfully!');
-    
+
     // Add a subtle fade-in effect to the body
     document.body.style.opacity = '0';
     setTimeout(() => {
@@ -403,7 +428,7 @@ document.addEventListener('keydown', (e) => {
             nextSection.scrollIntoView({ behavior: 'smooth' });
         }
     }
-    
+
     if (e.key === 'ArrowUp' && e.ctrlKey) {
         e.preventDefault();
         const currentScroll = window.pageYOffset;
@@ -449,7 +474,7 @@ const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLef
 document.addEventListener('keydown', (e) => {
     konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-10);
-    
+
     if (konamiCode.join(',') === konamiPattern.join(',')) {
         console.log('🎉 Konami Code activated!');
         document.body.style.animation = 'rainbow 2s linear infinite';
